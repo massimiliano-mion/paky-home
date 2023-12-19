@@ -1,5 +1,6 @@
 {
   "devDependencies": {
-    "@event-calendar/core": "^2.5.1"
+    "@event-calendar/core": "^2.5.1",
+    "@event-calendar/time-grid": "^2.5.1"
   }
 }
