@@ -29,9 +29,11 @@
                 
                 save.onclick = function(info,dialog){
                     return function(){
-                        minutes = document.querySelector("#eventMateria");
+                        minutes = document.querySelector("#eventMateria").value.split("|")[0];
+                        materia = document.querySelector("#eventMateria").value.split("|")[1];
                         pages = document.querySelector("#eventPages");
-                        ec.addEvent({start:info.date,end:addHours(info.date,minutes*pages/60),title:"test"});
+                        ec.addEvent({start:info.date,end:addHours(info.date,minutes*pages/60),title:materia});
+                        localStorage.setItem("Calendar", JSON.stringify(ec.getEvents()))
                         dialog.close();
                     }
                 }(info,dialog)
