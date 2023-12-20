@@ -21,7 +21,7 @@
                 save = document.querySelector("#eventCrudSave");
                 dialog.showModal();
                 
-                save.onClick = function(info,dialog){
+                save.onlcick = function(info,dialog){
                     return function(){
                         ec.addEvent({start:info.date,end:addHours(info.date,1),title:"test"});
                         dialog.close();
