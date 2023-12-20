@@ -5,6 +5,7 @@
     </head>
     <body>
         <div id="ec"></div>
+        <dialog id="eventCrud"> hola</dialog>
         <script>
             function addHours(date, hours) {
                 const dateCopy = new Date(date);
@@ -13,13 +14,19 @@
 
                 return dateCopy;
             }       
+            function addNewTask(info){
+                dialog = document.querySelector("#eventCrud");
+                dialog.showModal();
+                ec.addEvent({start:info.date,end:addHours(info.date,1),title:"test"})
+
+            }
             localStorage.getItem("Calendar") == null && localStorage.setItem("Calendar", "[]");
             let ec = new EventCalendar(document.getElementById('ec'), {
                 view: 'timeGridWeek',
                 events: eval(localStorage.getItem("Calendar")),
                 slotMinTime : '13:00:00',
                 slotMaxTime : '20:00:00',
-                dateClick : function (info){ec.addEvent({start:info.date,end:addHours(info.date,1),title:"test"})}
+                dateClick : function (info){addNewTask(info);}
 
             });
         </script>
