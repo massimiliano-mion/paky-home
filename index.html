@@ -6,13 +6,20 @@
     <body>
         <div id="ec"></div>
         <script>
+            function addHours(date, hours) {
+                const dateCopy = new Date(date);
+
+                dateCopy.setHours(dateCopy.getHours() + hours);
+
+                return dateCopy;
+            }       
             localStorage.getItem("Calendar") == null && localStorage.setItem("Calendar", "[]");
             let ec = new EventCalendar(document.getElementById('ec'), {
                 view: 'timeGridWeek',
                 events: eval(localStorage.getItem("Calendar")),
                 slotMinTime : '13:00:00',
                 slotMaxTime : '20:00:00',
-                dateClick : function (info){ec.addEvent({start:info.date,end:new Date(info.date).setHours(info.date.getHours()+1),title:"test"})}
+                dateClick : function (info){ec.addEvent({start:info.date,end:addHours(info.date,1),title:"test"})}
 
             });
         </script>
