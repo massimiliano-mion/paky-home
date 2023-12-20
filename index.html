@@ -6,11 +6,14 @@
     <body>
         <div id="ec"></div>
         <script>
+            localStorage.getItem("Calendar") =localStorage.getItem("Calendar") ||[]
             let ec = new EventCalendar(document.getElementById('ec'), {
                 view: 'timeGridWeek',
-                events: [
-                    // your list of events
-                ]
+                events: eval(localStorage.getItem("Calendar")),
+                slotMinTime : '13:00:00',
+                slotMaxTime : '20:00:00',
+                noEventsClick : function (info){alert(info.view);}
+
             });
         </script>
     </body>
