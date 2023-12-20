@@ -31,7 +31,7 @@
                     return function(){
                         minutes = document.querySelector("#eventMateria").value.split("|")[0];
                         materia = document.querySelector("#eventMateria").value.split("|")[1];
-                        pages = document.querySelector("#eventPages");
+                        pages = document.querySelector("#eventPages").value;
                         ec.addEvent({start:info.date,end:addHours(info.date,minutes*pages/60),title:materia});
                         localStorage.setItem("Calendar", JSON.stringify(ec.getEvents()))
                         dialog.close();
