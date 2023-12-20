@@ -6,7 +6,7 @@
     <body>
         <div id="ec"></div>
         <script>
-            localStorage.getItem("Calendar") =localStorage.getItem("Calendar") ||[]
+            localStorage.getItem("Calendar") == null ?? localStorage.setItem("Calendar", "[]");
             let ec = new EventCalendar(document.getElementById('ec'), {
                 view: 'timeGridWeek',
                 events: eval(localStorage.getItem("Calendar")),
