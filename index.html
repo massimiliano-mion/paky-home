@@ -5,7 +5,9 @@
     </head>
     <body>
         <div id="ec"></div>
-        <dialog id="eventCrud"> hola</dialog>
+        <dialog id="eventCrud"> 
+            <button id="eventCrudSave">OK</button>
+        </dialog>
         <script>
             function addHours(date, hours) {
                 const dateCopy = new Date(date);
@@ -16,8 +18,16 @@
             }       
             function addNewTask(info){
                 dialog = document.querySelector("#eventCrud");
+                save = document.querySelector("#eventCrudSave");
                 dialog.showModal();
-                ec.addEvent({start:info.date,end:addHours(info.date,1),title:"test"})
+                
+                save.onClick = function(info,dialog){
+                    return function(){
+                        ec.addEvent({start:info.date,end:addHours(info.date,1),title:"test"});
+                        dialog.close();
+                    }
+                }(info,dialog)
+                
 
             }
             localStorage.getItem("Calendar") == null && localStorage.setItem("Calendar", "[]");
