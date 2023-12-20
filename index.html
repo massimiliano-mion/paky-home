@@ -15,10 +15,10 @@
             <button id="eventCrudSave">OK</button>
         </dialog>
         <script>
-            function addHours(date, hours) {
+            function addMinutes(date, minutes) {
                 const dateCopy = new Date(date);
 
-                dateCopy.setHours(dateCopy.getHours() + hours);
+                dateCopy.setMinutes(dateCopy.getMinutes() + minutes);
 
                 return dateCopy;
             }       
@@ -32,7 +32,7 @@
                         minutes = document.querySelector("#eventMateria").value.split("|")[0];
                         materia = document.querySelector("#eventMateria").value.split("|")[1];
                         pages = document.querySelector("#eventPages").value;
-                        ec.addEvent({start:info.date,end:addHours(info.date,minutes*pages/60),title:materia});
+                        ec.addEvent({start:info.date,end:addMinutes(info.date,minutes*pages),title:materia});
                         localStorage.setItem("Calendar", JSON.stringify(ec.getEvents()))
                         dialog.close();
                     }
